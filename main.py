@@ -28,9 +28,22 @@ def main():
 
             longitud = float(input("Ingrese la longitud (m): "))
 
-            velocidad = float(input("Ingrese la velocidad del sonido (m/s): "))
+            if longitud <= 0:
 
-            tubo = TuboResonante(longitud, velocidad)
+                print("La longitud debe ser mayor que cero.")
+
+                continue
+
+            velocidad = float(
+                input("Ingrese la velocidad del sonido (m/s): "))
+
+            if velocidad <= 0:
+
+                print("La velocidad debe ser mayor que cero.")
+
+                continue
+
+            tubo = TuboResonante(longitud,velocidad)
 
             frecuencia = (tubo.calcular_fundamental())
 
@@ -38,17 +51,35 @@ def main():
 
             print("\nFrecuencia fundamental:")
 
-            print(round(frecuencia, 2),"Hz")
+            print(
+                round(frecuencia, 2),"Hz")
 
         elif opcion == "2":
 
             longitud = float(input("Ingrese la longitud (m): "))
 
-            velocidad = float(input("Ingrese la velocidad del sonido (m/s): "))
+            if longitud <= 0:
+
+                print("La longitud debe ser mayor que cero.")
+
+                continue
+
+            velocidad = float(
+                input("Ingrese la velocidad del sonido (m/s): "))
+
+            if velocidad <= 0:
+
+                print("La velocidad debe ser mayor que cero.")
+
+                continue
 
             armonico = int(input("Ingrese el armónico impar: "))
 
-            if armonico % 2 == 0:
+            if armonico <= 0:
+
+                print("El armónico debe ser positivo.")
+
+            elif armonico % 2 == 0:
 
                 print("Solo se permiten armónicos impares.")
 
@@ -56,7 +87,8 @@ def main():
 
                 tubo = TuboResonante(longitud,velocidad)
 
-                frecuencia = (tubo.calcular_armonico(armonico))
+                frecuencia = (
+                    tubo.calcular_armonico(armonico))
 
                 historial.agregar_resultado(frecuencia)
 
@@ -72,7 +104,7 @@ def main():
 
             promedio = (historial.calcular_promedio())
 
-            print("\nPromedio:")
+            print("\nPromedio de frecuencias:")
 
             print(round(promedio, 2),"Hz")
 
